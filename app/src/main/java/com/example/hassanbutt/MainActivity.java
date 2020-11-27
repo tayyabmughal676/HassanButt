@@ -2,6 +2,7 @@ package com.example.hassanbutt;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,23 +40,30 @@ public class MainActivity extends AppCompatActivity {
 
         if (name.isEmpty()) {
             mUserName.setError("Enter User Name");
+            return;
         }
         if (email.isEmpty()) {
             mEmail.setError("Enter Email");
+            return;
         }
         if (password.isEmpty()) {
             mPassword.setError("Enter Password");
+            return;
         }
         if (retypePassword.isEmpty()) {
             mRetyepPassword.setError("Enter Retype Password");
+            return;
         }
 
-        Toast.makeText(this,
-                "Name is: " + name +
-                        "Email is: " + email,
-                Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,
+//                "Name is: " + name +
+//                        "Email is: " + email,
+//                Toast.LENGTH_SHORT).show();
 
-        Toast.makeText(this, "Welcome " + name, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Welcome " + name, Toast.LENGTH_SHORT).show();
 
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        intent.putExtra("HelloUser", name);
+        startActivity(intent);
     }
 }
